@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+    <!-- 
+    *Hooks
+
+    1. React element types: string, function/class
+        -Wrapper
+            - Header -> Header component
+            - Content -> Content component
+            - Footer -> Footer component
+    2. Biểu diễn đơn giản với JSX
+    -->
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        // function Header() {
+        //     return (
+        //         <div className="header">New Header</div>
+        //     )
+        // }
+
+        // class Content extends React.Component {
+        //     render() {
+        //         return (
+        //             <div className="content">New Content</div>
+        //         )
+        //     }
+        // }
+
+        // const app = (
+        //     <div className="wrapper">
+        //         <Header />
+        //         <Content />
+        //         <div className="footer">Footer</div>
+        //     </div>
+        // )
+
+        // ReactDOM.render(app, document.getElementById('root'))
+
+
+        // Bai tap
+        function PostItem() {
+            return (
+                <div className="post-item">
+                    <img src="https://images.pexels.com/photos/11558042/pexels-photo-11558042.jpeg?auto=compress&cs=tinysrgb&w=600" alt="abc"></img>
+                    <h2 className="post-title">Tương tác với file Excel</h2>
+                    <p className="post-desc">Bạn có kiến thức ngôn ngữ C#</p>
+                    <p className="post-published">Một ngày trước 5 phút đọc</p>
+                </div>
+            )
+        }
+
+        const app = (
+            <PostItem></PostItem>
+        )
+        ReactDOM.render(app, document.getElementById('root'))
+
+    </script>
+</body>
+</html>

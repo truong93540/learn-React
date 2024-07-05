@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+</head>
+<body>
+    <!-- 
+        1. Tại sao phải sử dụng React-DOM?
+        2. Tại sao lại tách React-DOM ra?
+        3. Render UI
+
+        React-Native -> IOS, Android
+    -->
+    <div id="root"></div>
+
+    <script>
+        const postItem = React.createElement(
+            'div',
+            {
+                className: 'post-item',
+            },
+            React.createElement(
+                'h2',
+                {
+                    title: 'học React',
+                },
+                'Học ReactJS'
+            ),
+            React.createElement(
+                'p',
+                null,
+                'Học ReactJS từ cơ bản tói nâng cao'
+            )
+        )
+
+        // Get root element
+        const container = document.getElementById('root')
+
+        // React @17
+        // React-DOM -> render UI
+        ReactDOM.render(postItem, root)
+    </script>
+</body>
+</html>
