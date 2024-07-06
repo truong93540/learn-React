@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+
+<body>
+    <!-- 
+        - Props:
+            - React elements
+            - Sử dụng props giống như với thẻ attribute trong HTML
+            - 2 props class, for => className, htmlFor
+            - Phải tuân theo quy ước sẵn có
+        - React components:
+            - Sử dụng props giống như đối số cho components
+            - Tự do đặt tên cho props
+                - Đặt theo camelCase
+                - Có thể bao gồm dấu gạch ngang
+        - Chú ý:
+            - Prop "key" là props đặc biệt
+            - Props cơ bản là đối số của Components
+                => Props có thể là bất cứ kiểu dữ liệu gì
+            - Sử dụng destructuring
+    -->
+    <div id="root"></div>
+    <script type="text/babel">
+
+        // // PostItem.js
+        // function PostItem({
+        //     title,
+        //     image,
+        //     description,
+        //     publishedAt,
+        //     callback = () => {},
+        // }) {
+        //     // console.log(props);
+        //     callback(Math.random())
+        //     return (
+        //         <div className="post-item">
+        //             <label htmlFor="email">Name: </label>
+        //             <input id="email" type="text"></input>
+        //             <img src={image} alt={title}></img>
+        //             <h2 className="post-title">{title}</h2>
+        //             <p className="post-desc">{description}</p>
+        //             <p className="post-published">{publishedAt}</p>
+        //         </div>
+        //     )
+        // }
+
+        // // App.js
+        // function App() {
+        //     return (
+        //         <div id="wrapper">
+        //             <PostItem
+        //                 title="1 - Tương tác với file Excel"
+        //                 image="https://images.pexels.com/photos/11558042/pexels-photo-11558042.jpeg?auto=compress&cs=tinysrgb&w=600"
+        //                 description="1 - Bạn có kiến thức ngôn ngữ C#"
+        //                 publishedAt="1 - Một ngày trước 5 phút đọc"
+        //                 callback={(random) => {
+        //                     console.log('random: ', random)
+        //                 }}
+        //             />
+        //             <PostItem
+        //                 title="2 - Tương tác với file Excel"
+        //                 image="https://images.pexels.com/photos/11558042/pexels-photo-11558042.jpeg?auto=compress&cs=tinysrgb&w=600"
+        //                 description="2 - Bạn có kiến thức ngôn ngữ C#"
+        //                 publishedAt="2 - Một ngày trước 5 phút đọc"
+        //             />
+        //             <PostItem
+        //                 title="3 - Tương tác với file Excel"
+        //                 image="https://images.pexels.com/photos/11558042/pexels-photo-11558042.jpeg?auto=compress&cs=tinysrgb&w=600"
+        //                 description="3 - Bạn có kiến thức ngôn ngữ C#"
+        //                 publishedAt="3 - Một ngày trước 5 phút đọc"
+        //             />
+        //         </div>
+        //     )
+        // }
+
+        // // index.js
+        // ReactDOM.render(<App />, document.getElementById('root'))
+
+
+
+        const courses = [
+            {
+                "id": 15,
+                "title": "HTML CSS Pro",
+                "slug": "htmlcss",
+                "description": "Từ cơ bản tới chuyên sâu, thực hành 8 dự án, hàng trăm bài tập, trang hỏi đáp riêng, cấp chứng chỉ sau khóa học và mua một lần học mãi mãi.",
+                "image_url": "https://files.fullstack.edu.vn/f8-prod/courses/15/62f13d2424a47.png",
+                "icon_url": "https://files.fullstack.edu.vn/f8-prod/courses/15/62385d6c63dfa.png",
+                "price": 1299000,
+                "old_price": 2500000,
+                "pre_order_price": 699000,
+                "is_pro": true,
+                "is_published": true,
+                "is_selling": true,
+                "is_pre_order": false,
+                "is_coming_soon": false,
+                "students_count": 0,
+                "videos_count": 590,
+                "duration": 419594,
+                "duration_text": "116h33p",
+                "user_progress": 0,
+                "last_completed_at": null,
+                "landing_page_url": "/landing/htmlcss",
+                "published_at": "2022-08-18T17:00:00.000000Z"
+            },
+            {
+                "id": 27,
+                "title": "Ngôn ngữ tiền xử lý Sass",
+                "slug": "sass",
+                "description": "Đây là một khóa học nhỏ được tách ra từ 2 chương học trong khóa HTML CSS Pro. Kiến thức về Sass trong khóa này bạn có thể áp dụng ngay vào các dự án của bạn.",
+                "image_url": "https://files.fullstack.edu.vn/f8-prod/courses/27/64e184ee5d7a2.png",
+                "icon_url": "https://files.fullstack.edu.vn/f8-prod/courses/27/64e0daf212fad.png",
+                "price": 299000,
+                "old_price": 400000,
+                "pre_order_price": 0,
+                "is_pro": true,
+                "is_published": true,
+                "is_selling": true,
+                "is_pre_order": false,
+                "is_coming_soon": false,
+                "students_count": 0,
+                "videos_count": 27,
+                "duration": 22690,
+                "duration_text": "6h18p",
+                "user_progress": 0,
+                "last_completed_at": null,
+                "landing_page_url": "/landing/sass",
+                "published_at": "2023-08-19T15:06:00.000000Z"
+            },
+            {
+                "id": 19,
+                "title": "JavaScript Pro",
+                "slug": "javascript",
+                "description": "Khóa học JavaScript Pro",
+                "image_url": "https://files.fullstack.edu.vn/f8-prod/courses/19/62f13cb607b4b.png",
+                "icon_url": "https://files.fullstack.edu.vn/f8-prod/courses/19/62f13cb685c81.png",
+                "price": 0,
+                "old_price": 0,
+                "pre_order_price": 0,
+                "is_pro": true,
+                "is_published": true,
+                "is_selling": false,
+                "is_pre_order": false,
+                "is_coming_soon": true,
+                "students_count": 0,
+                "videos_count": 86,
+                "duration": 49309,
+                "duration_text": "13h41p",
+                "user_progress": 0,
+                "last_completed_at": null,
+                "landing_page_url": "/landing/javascript",
+                "published_at": "2024-06-30T17:00:00.000000Z"
+            }
+        ]
+
+        function PostItem( { key, title, description, image, duration }) {
+            return (
+                <div className="post-item">
+                    <h1>{title}</h1>
+                    <img src={image} alt={description}></img>
+                    <p>Mô tả: {description}</p>
+                    <p>Số lượng học viên: {duration}</p>
+                </div>
+            )
+        }
+
+        function App() {
+            return (
+                <div>
+                    {
+                        courses.map(item => {
+                            return (
+                                <PostItem
+                                    key = {item.id}
+                                    title={item.title}
+                                    description={item.description}
+                                    image={item.image_url}
+                                    duration={item.duration}
+                                />
+                            )
+                        })
+                    }
+                </div>
+            )
+        }
+
+        ReactDOM.render(<App />, document.getElementById('root'))
+
+    </script>
+</body>
+
+</html>

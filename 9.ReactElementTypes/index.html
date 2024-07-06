@@ -52,6 +52,8 @@
         function PostItem() {
             return (
                 <div className="post-item">
+                    <label htmlFor="email">Name: </label>
+                    <input id="email" type="text"></input>
                     <img src="https://images.pexels.com/photos/11558042/pexels-photo-11558042.jpeg?auto=compress&cs=tinysrgb&w=600" alt="abc"></img>
                     <h2 className="post-title">Tương tác với file Excel</h2>
                     <p className="post-desc">Bạn có kiến thức ngôn ngữ C#</p>
@@ -60,10 +62,19 @@
             )
         }
 
-        const app = (
-            <PostItem></PostItem>
-        )
-        ReactDOM.render(app, document.getElementById('root'))
+        // App.js
+        function App() {
+            return (
+                <div id="wrapper">
+                    <PostItem />
+                    <PostItem />
+                    <PostItem />
+                </div>
+            )
+        }
+
+        // index.js
+        ReactDOM.render(<App />, document.getElementById('root'))
 
     </script>
 </body>

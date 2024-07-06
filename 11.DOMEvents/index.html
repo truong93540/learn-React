@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+
+<body>
+    <!-- 
+        Làm việc với JSX
+
+        // Phần I
+        - Xử lý DOM events
+        - Component do chúng ta định nghĩa phải viết
+            in hoa kí tự đầu
+            - Chọn component trong 1 object
+        - Booleans, Null & Undefined không được render
+        - Kế hợp toán từ logic để render theo điều kiện
+
+        // Phần II
+        - Props trong JSX
+            - <YourComponent
+                propName1="String literals"
+                propName2={expression}
+            />
+            - Props default to "true"
+            - Spread/Rest props
+            - Children prop
+                - <YourComponent>String literals</YourComponent>
+                - <YourComponent>{expression}</YourComponent>
+            - Render props
+    -->
+    <div id="root"></div>
+    <script type="text/babel">
+        // function App() {
+        //     return (
+        //         <div id="wrapper">
+        //             <button onClick={() => console.log(Math.random())}>
+        //                 Click me!
+        //             </button>
+        //             <button onDoubleClick={(events) => console.log(events.target)}>
+        //                 Click me!
+        //             </button>    
+        //         </div>
+        //     )
+
+        // }
+        // ReactDOM.render(<App />, document.getElementById('root'))
+
+
+
+        // const courses = [
+        //     {
+        //         "id": 15,
+        //         "title": "HTML CSS Pro",
+        //         "slug": "htmlcss",
+        //         "description": "Từ cơ bản tới chuyên sâu, thực hành 8 dự án, hàng trăm bài tập, trang hỏi đáp riêng, cấp chứng chỉ sau khóa học và mua một lần học mãi mãi.",
+        //         "image_url": "https://files.fullstack.edu.vn/f8-prod/courses/15/62f13d2424a47.png",
+        //         "icon_url": "https://files.fullstack.edu.vn/f8-prod/courses/15/62385d6c63dfa.png",
+        //         "price": 1299000,
+        //         "old_price": 2500000,
+        //         "pre_order_price": 699000,
+        //         "is_pro": true,
+        //         "is_published": true,
+        //         "is_selling": true,
+        //         "is_pre_order": false,
+        //         "is_coming_soon": false,
+        //         "students_count": 0,
+        //         "videos_count": 590,
+        //         "duration": 419594,
+        //         "duration_text": "116h33p",
+        //         "user_progress": 0,
+        //         "last_completed_at": null,
+        //         "landing_page_url": "/landing/htmlcss",
+        //         "published_at": "2022-08-18T17:00:00.000000Z"
+        //     },
+        //     {
+        //         "id": 27,
+        //         "title": "Ngôn ngữ tiền xử lý Sass",
+        //         "slug": "sass",
+        //         "description": "Đây là một khóa học nhỏ được tách ra từ 2 chương học trong khóa HTML CSS Pro. Kiến thức về Sass trong khóa này bạn có thể áp dụng ngay vào các dự án của bạn.",
+        //         "image_url": "https://files.fullstack.edu.vn/f8-prod/courses/27/64e184ee5d7a2.png",
+        //         "icon_url": "https://files.fullstack.edu.vn/f8-prod/courses/27/64e0daf212fad.png",
+        //         "price": 299000,
+        //         "old_price": 400000,
+        //         "pre_order_price": 0,
+        //         "is_pro": true,
+        //         "is_published": true,
+        //         "is_selling": true,
+        //         "is_pre_order": false,
+        //         "is_coming_soon": false,
+        //         "students_count": 0,
+        //         "videos_count": 27,
+        //         "duration": 22690,
+        //         "duration_text": "6h18p",
+        //         "user_progress": 0,
+        //         "last_completed_at": null,
+        //         "landing_page_url": "/landing/sass",
+        //         "published_at": "2023-08-19T15:06:00.000000Z"
+        //     },
+        //     {
+        //         "id": 19,
+        //         "title": "JavaScript Pro",
+        //         "slug": "javascript",
+        //         "description": "Khóa học JavaScript Pro",
+        //         "image_url": "https://files.fullstack.edu.vn/f8-prod/courses/19/62f13cb607b4b.png",
+        //         "icon_url": "https://files.fullstack.edu.vn/f8-prod/courses/19/62f13cb685c81.png",
+        //         "price": 0,
+        //         "old_price": 0,
+        //         "pre_order_price": 0,
+        //         "is_pro": true,
+        //         "is_published": true,
+        //         "is_selling": false,
+        //         "is_pre_order": false,
+        //         "is_coming_soon": true,
+        //         "students_count": 0,
+        //         "videos_count": 86,
+        //         "duration": 49309,
+        //         "duration_text": "13h41p",
+        //         "user_progress": 0,
+        //         "last_completed_at": null,
+        //         "landing_page_url": "/landing/javascript",
+        //         "published_at": "2024-06-30T17:00:00.000000Z"
+        //     }
+        // ]
+
+        // // UI component
+        // function PostItem( { course, onClick } ) {
+        //     return (
+        //         <div>
+        //             <h1 onClick= {() => onClick(course)} >{course.title}</h1>
+        //             <img src={course.image_url} alt={course.title} />
+        //             <p>Mô tả: {course.description}</p>
+        //             <p>Số lượng bài học: {course.videos_count}</p>
+        //         </div>
+        //     )
+        // }
+
+        // function App() {
+        //     const handleClick = (item) => {
+        //         alert(item.title)
+        //     }
+        //     return (
+        //         <div>
+        //             {
+        //                 courses.map((item) => {
+        //                     return (
+        //                         <PostItem 
+        //                             key = {item.id}
+        //                             course = {item}
+        //                             onClick = {handleClick}
+        //                         />
+        //                     )
+        //                 })
+        //             }
+        //         </div>
+        //     )
+        // }
+
+        // ReactDOM.render(<App />, document.getElementById('root'))
+
+
+        // const Form = {
+        //     Input() {
+        //         return <input />
+        //     },
+        //     Checkbox() {
+        //         return <input type="checkbox" />
+        //     }
+        // }
+
+        // function App() {
+
+        //     const type = 'Checkbox'
+
+        //     const Component = Form[type]
+
+        //     return (
+        //         <div>
+        //             <Component />    
+        //         </div>
+        //     )
+        // }
+
+        // ReactDOM.render(<App />, document.getElementById('root'))
+
+
+
+        // function Button({ title, href, onClick }) {
+        //     let Component = 'button'
+        //     const props = {}
+
+        //     if(href) {
+        //         Component = 'a'
+        //         props.href = href
+        //     }
+
+        //     if (onClick) {
+        //         props.onClick = onClick
+        //     }
+
+        //     return (
+        //         <Component {...props}> {title} </Component>
+        //     )
+        // }
+
+        // function App() {
+        //     return (
+        //         <div>
+        //             <Button
+        //                 title="Click me!"
+        //                 href="https://www.w3schools.com/"
+        //                 onClick={() => console.log(Math.random())}
+        //             />
+        //         </div>
+        //     )
+        // }
+        // ReactDOM.render(<App />, document.getElementById('root'))
+
+
+
+        // function App({ title }) {
+        //     return (
+        //         <div>
+        //             <h1>{title || 'Gia tri mac dinh'}</h1>
+        //         </div>
+        //     )
+        // }
+        // ReactDOM.render(<App />, document.getElementById('root'))
+
+
+
+        // function Input({ title, primary }) {
+        //     console.log(primary)
+        //     // Logic...
+
+        //         return <button>{title}</button>
+        //     }
+
+        // function App() {
+        //     const title = "Hello anh em"
+
+        //     return ( 
+        //         <div>
+        //             <Button 
+        //                 primary 
+        //                 title={title} 
+        //             />
+        //         </div>
+        //     )
+        // }
+        // ReactDOM.render(<App />, document.getElementById('root'))
+
+
+
+        // function Input({ label, ...inputProp }) {
+        //     return (
+        //         <div>
+        //             <label for="">{label}</label>
+        //             <input {...inputProp}/> 
+        //         </div>
+        //     )
+        // }
+
+        // function App() {
+
+        //     return ( 
+        //         <div>
+        //             <Input
+        //                 label="Full name"
+        //                 type="checkbox"
+        //                 placeholder="Enter name..."
+        //                 title="Day la input"
+        //                 onFocus={() => {
+        //                     console.log(Math.random())
+        //                 }}
+        //             />
+        //         </div>
+        //     )
+        // }
+        // ReactDOM.render(<App />, document.getElementById('root'))
+
+
+
+        // function Button({ children }) {
+
+        //     return (
+        //         <button>{children}</button>
+        //     )
+        // }
+
+        // function App() {
+        //     return (
+        //         <div>
+        //             <Button>{true && 'Click me!'}</Button>
+        //         </div>
+        //     )
+        // }
+        // ReactDOM.render(<App />, document.getElementById('root'))
+
+
+
+        function List({ data, children }) {
+            console.log(children)
+            return (
+                <ul>
+                    {data.map(item => children(item))}
+                </ul>
+            )
+        }
+
+        function App() {
+            const cars = ['BMW', 'Honda', 'Mazda']
+
+            return (
+                <div>
+                    <List data={cars}>
+                        {(item) => <li>{item}</li>}
+                    </List>    
+                </div>
+            )
+        }
+
+        ReactDOM.render(<App />, document.getElementById('root'))
+    </script>
+</body>
+
+</html>
