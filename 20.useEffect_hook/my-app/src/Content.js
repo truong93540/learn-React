@@ -29,7 +29,7 @@ import { useEffect, useState } from 'react'
 // 2. useEffect(callback, [])
 // - Chỉ gọi callback 1 lần mỗi khi component mounted
 // 3. useEffect(callback, [deps])
-// - Callback sẽ được gọi lại mỗi khi des thay đổi
+// - Callback sẽ được gọi lại mỗi khi des thay đổi và render hoàn tất
 
 // -----------
 // 1. Callback luôn được gọi sau khi component mounted
@@ -41,16 +41,17 @@ function Content() {
     const [posts, setPosts] = useState([])
     const [type, setType] = useState('posts')
 
-    // console.log(type)
+    console.log(type)
 
     useEffect(() => {
-        // console.log('type changed')
+        console.log('type changed')
         fetch(`https://jsonplaceholder.typicode.com/${type}`)
             .then(res => res.json())
             .then(posts => {
                 setPosts(posts)
             })
     }, [type])
+
 
     return (
         <div>
